@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import os
+import subprocess
 
 app = FastAPI()
 
@@ -9,4 +9,4 @@ async def root():
 
 @app.get('/sysinfo')
 async def sysinfo():
-    return os.system('cat /proc/cpuinfo')
+    return subprocess.check_output(['cat', '/proc/cpuinfo'])
